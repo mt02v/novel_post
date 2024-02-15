@@ -1,0 +1,37 @@
+<div data-controller="novel">
+  <div class="form-left">
+    <%= form_with(model: novel) do |form| %>
+      <% if novel.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(novel.errors.count, "error") %> prohibited this novel from being saved:</h2>
+
+          <ul>
+            <% novel.errors.each do |error| %>
+              <li><%= error.full_message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :content %>
+    <%= form.text_area :content, 'data-target': 'novel.content', 'data-aciton': 'input->novel"content' %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+
+  <div class="form-right">
+    <h1>Content</h1>
+    <div data-target="novel.preview"></div>
+  </div>
+</div>
+
+<%= javascript_pack_tag 'application.js' %>
