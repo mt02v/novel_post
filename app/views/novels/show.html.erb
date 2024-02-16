@@ -7,14 +7,14 @@
 
 <p>
   <strong>Content:</strong>
-  <%= @novel.content %>
+  <%= sanitize @novel.content, tags: %w(h1 h2 h3 h4 h5 h6 ul ol li p a img table tr td em br strong div), attributes: %w(id class href) %>
 </p>
 
 <h2>Comments</h2>
   <div id="comments">
     <%= render @novel.comments %>
   </div>
-<%= render 'comments/new', novel: @novel 
+<%= render 'comments/new', novel: @novel
 
 
 <%= link_to 'Edit', edit_novel_path(@novel) %> |

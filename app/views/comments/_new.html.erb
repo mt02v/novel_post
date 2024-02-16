@@ -1,5 +1,16 @@
 <%= form_with(model: [ @novel, Comment.new ], remote: ture ) do |form| %>
+  <div class="novel_rate"></div>
   Your Comment:<br>
-  <%= form.text_area :content, size: '50×20' %><br>
+  <%= form.hidden_field :content, id: :novel_comments %>
+  <tirx-editor input="novel_comments"></trix-editor>
   <%= form.submit %>
 <% end %>
+
+<script>
+$(function() {
+    $('.novel_rate').raty({
+      score: 5,
+      starType: 'i',
+    })
+})
+</script>

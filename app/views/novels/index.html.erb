@@ -15,7 +15,6 @@
     <% @novels.each do |novel| %>
       <tr>
         <td><%= novel.title %></td>
-        <td><%= novel.content %></td>
         <td><%= link_to 'Show', novel %></td>
         <td><%= link_to 'Edit', edit_novel_path(novel) %></td>
         <td><%= link_to 'Destroy', novel, method: :delete, data: { confirm: 'Are you sure?' } %></td>

@@ -6,8 +6,8 @@
           <h2><%= pluralize(novel.errors.count, "error") %> prohibited this novel from being saved:</h2>
 
           <ul>
-            <% novel.errors.each do |error| %>
-              <li><%= error.full_message %></li>
+            <% novel.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
             <% end %>
           </ul>
         </div>
@@ -20,7 +20,8 @@
 
   <div class="field">
     <%= form.label :content %>
-    <%= form.text_area :content, 'data-target': 'novel.content', 'data-aciton': 'input->novel"content' %>
+    <%= form.hidden_field :content, id: :novel_content %>
+    <%= trix-editor input="novel_content" 'data-target': 'novel.content', 'data-aciton': 'input->novel"content' %>
   </div>
 
   <div class="actions">

@@ -2,7 +2,8 @@ class CommentsController < ApplicationControlle
   before_action :set_novel
 
   def create
-    @post.comments.create! comments_params
+    @comment = @novel.comments.create! comments_params
+    @comment.update(:score => params[:score])
     redirect_to @novel
   end
 
@@ -13,7 +14,7 @@ class CommentsController < ApplicationControlle
 
   private
     def set_novel
-      @post = Novel.find(params[:id])
+      @post = Novel.find(params[:novel_id])
     end
 
     def comments_params
